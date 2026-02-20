@@ -12,30 +12,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - ใช้ SF Pro Display (ใกล้เคียง iOS) และไทย -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- AOS (Animate On Scroll) -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://themewagon.github.io/jobest/v1.0.0/assets/img/illustrations/jobs.png">
     
     <style>
-        /* CSS Variables - Liquid Glass Theme */
+        /* CSS Variables - Blue Theme */
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --success-gradient: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
-            --warning-gradient: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
-            --danger-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            --primary-start: #00c6fb;
+            --primary-end: #005bea;
+            --secondary-start: #4facfe;
+            --secondary-end: #00f2fe;
+            --accent-start: #43e97b;
+            --accent-end: #38f9d7;
+            --warning-start: #fa709a;
+            --warning-end: #fee140;
             
-            --glass-bg: rgba(255, 255, 255, 0.25);
+            --primary-gradient: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
+            --secondary-gradient: linear-gradient(135deg, var(--secondary-start) 0%, var(--secondary-end) 100%);
+            --accent-gradient: linear-gradient(135deg, var(--accent-start) 0%, var(--accent-end) 100%);
+            --warning-gradient: linear-gradient(135deg, var(--warning-start) 0%, var(--warning-end) 100%);
+            
+            --glass-bg: rgba(255, 255, 255, 0.2);
             --glass-border: rgba(255, 255, 255, 0.3);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 91, 234, 0.15);
             --glass-blur: blur(12px);
             
-            --dark-glass-bg: rgba(0, 0, 0, 0.1);
+            --dark-glass-bg: rgba(0, 91, 234, 0.1);
             --dark-glass-border: rgba(255, 255, 255, 0.1);
             
             --text-primary: #1e293b;
@@ -55,7 +62,7 @@
 
         body {
             font-family: 'Inter', 'Prompt', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #00c6fb 0%, #005bea 50%, #4facfe 100%);
             min-height: 100vh;
             color: var(--text-primary);
             overflow-x: hidden;
@@ -105,7 +112,7 @@
             -webkit-backdrop-filter: var(--glass-blur);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: var(--card-radius);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 91, 234, 0.2);
             transition: var(--transition);
         }
 
@@ -113,7 +120,7 @@
             transform: translateY(-8px) scale(1.02);
             background: rgba(255, 255, 255, 0.3);
             border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 91, 234, 0.3);
         }
 
         /* Navbar */
@@ -134,7 +141,7 @@
 
         .navbar-brand img {
             height: 50px;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(0 4px 6px rgba(0, 91, 234, 0.2));
             transition: var(--transition);
         }
 
@@ -148,7 +155,7 @@
             -webkit-text-fill-color: transparent;
             font-weight: 800;
             font-size: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 4px rgba(0, 91, 234, 0.1);
         }
 
         .nav-link {
@@ -187,11 +194,12 @@
 
         /* Hero Section */
         .hero-section {
-            min-height: 90vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding: 100px 0 50px;
         }
 
         .hero-section::before {
@@ -199,15 +207,31 @@
             position: absolute;
             top: -50%;
             right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 198, 251, 0.2) 0%, transparent 50%);
+            animation: rotate 60s linear infinite;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 91, 234, 0.2) 0%, transparent 50%);
+            animation: rotateReverse 50s linear infinite;
         }
 
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateReverse {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
         }
 
         .hero-content {
@@ -216,21 +240,44 @@
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 800;
             line-height: 1.2;
             background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+            text-shadow: 0 10px 30px rgba(0, 91, 234, 0.2);
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            font-size: clamp(1rem, 3vw, 1.3rem);
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
-            max-width: 800px;
+            max-width: 700px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat-item {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
         }
 
         /* Glass Button */
@@ -245,9 +292,12 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 91, 234, 0.2);
             position: relative;
             overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .glass-btn::before {
@@ -264,11 +314,58 @@
         .glass-btn:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 91, 234, 0.3);
         }
 
         .glass-btn:hover::before {
             left: 100%;
+        }
+
+        .glass-btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .floating-1 {
+            top: 20%;
+            right: 5%;
+            width: 200px;
+            height: 200px;
+            animation-delay: 0s;
+        }
+
+        .floating-2 {
+            bottom: 10%;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 2s;
+        }
+
+        .floating-3 {
+            top: 40%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            animation-delay: 4s;
         }
 
         /* Stat Cards */
@@ -312,7 +409,7 @@
             font-size: 3rem;
             margin-bottom: 20px;
             color: white;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+            filter: drop-shadow(0 4px 6px rgba(0, 91, 234, 0.2));
         }
 
         .stat-number {
@@ -321,7 +418,7 @@
             color: white;
             line-height: 1;
             margin-bottom: 10px;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 4px 10px rgba(0, 91, 234, 0.2);
         }
 
         .stat-title {
@@ -378,7 +475,7 @@
         .filter-btn.active {
             background: rgba(255, 255, 255, 0.3);
             border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 198, 251, 0.5);
         }
 
         /* Job Cards */
@@ -413,7 +510,7 @@
             transform: translateY(-10px) scale(1.02);
             background: rgba(255, 255, 255, 0.15);
             border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 91, 234, 0.3);
         }
 
         .job-header {
@@ -426,7 +523,7 @@
             font-weight: 700;
             color: white;
             margin-bottom: 5px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 2px 5px rgba(0, 91, 234, 0.1);
         }
 
         .job-department {
@@ -444,6 +541,8 @@
             font-size: 0.9rem;
             color: white;
             margin-right: 8px;
+            display: inline-block;
+            margin-bottom: 5px;
         }
 
         .job-body {
@@ -459,7 +558,7 @@
 
         .job-detail i {
             width: 25px;
-            color: rgba(255, 255, 255, 0.8);
+            color: #00f2fe;
             margin-right: 10px;
         }
 
@@ -485,14 +584,14 @@
         }
 
         .job-status.urgent {
-            background: rgba(255, 99, 99, 0.3);
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 99, 99, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 99, 99, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 99, 99, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(250, 112, 154, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(250, 112, 154, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(250, 112, 154, 0); }
         }
 
         /* Requirements Section */
@@ -516,8 +615,13 @@
         .requirement-icon {
             font-size: 3rem;
             margin-bottom: 25px;
-            color: white;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            color: #00f2fe;
+            filter: drop-shadow(0 4px 6px rgba(0, 91, 234, 0.2));
+        }
+
+        .requirement-list {
+            list-style: none;
+            padding: 0;
         }
 
         .requirement-list li {
@@ -528,8 +632,9 @@
         }
 
         .requirement-list li i {
-            color: #84fab0;
-            margin-right: 10px;
+            color: #00f2fe;
+            margin-right: 15px;
+            font-size: 1.2rem;
         }
 
         .glass-alert {
@@ -543,14 +648,34 @@
             color: white;
         }
 
+        /* Section Title */
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 5px 15px rgba(0, 91, 234, 0.2);
+        }
+
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
         /* Footer */
         .footer {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 91, 234, 0.2);
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding: 60px 0 30px;
             margin-top: 50px;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 20px;
         }
 
         .footer-title {
@@ -569,7 +694,7 @@
             bottom: 0;
             width: 50px;
             height: 3px;
-            background: linear-gradient(90deg, #84fab0, #8fd3f4);
+            background: linear-gradient(90deg, #00c6fb, #005bea);
             border-radius: 3px;
         }
 
@@ -579,23 +704,27 @@
 
         .footer-contact p {
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
         }
 
         .footer-contact i {
             width: 25px;
-            color: #84fab0;
+            color: #00f2fe;
+            margin-right: 10px;
         }
 
         .map-container {
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 91, 234, 0.2);
         }
 
         .map-container iframe {
             width: 100%;
             height: 250px;
-            filter: brightness(0.8);
+            filter: brightness(0.9);
             transition: var(--transition);
         }
 
@@ -629,6 +758,7 @@
             transform: translateY(-5px) rotate(360deg);
             background: rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.4);
+            color: #00f2fe;
         }
 
         /* Scroll to Top */
@@ -653,7 +783,7 @@
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 91, 234, 0.2);
         }
 
         .scroll-top.show {
@@ -683,7 +813,7 @@
             transform: translateX(-100px);
             opacity: 0;
             transition: var(--transition);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 91, 234, 0.3);
         }
 
         .cookie-consent.show {
@@ -714,7 +844,7 @@
             height: 60px;
             border-radius: 50%;
             border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
+            border-top-color: #00f2fe;
             animation: spin 1s infinite linear;
         }
 
@@ -733,7 +863,7 @@
             }
             
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .stat-card {
@@ -743,11 +873,19 @@
             .job-card {
                 margin-bottom: 20px;
             }
+
+            .hero-stats {
+                gap: 15px;
+            }
+
+            .hero-stat-number {
+                font-size: 2rem;
+            }
         }
 
         /* Utility Classes */
-        .text-gradient {
-            background: linear-gradient(135deg, #fff, #e0e0e0);
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #00c6fb, #005bea);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -756,9 +894,22 @@
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
         }
+
+        .mt-6 {
+            margin-top: 4rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 4rem;
+        }
     </style>
 </head>
 <body>
+    <!-- Floating Background Elements -->
+    <div class="floating-element floating-1"></div>
+    <div class="floating-element floating-2"></div>
+    <div class="floating-element floating-3"></div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -797,23 +948,42 @@
     <section id="home" class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-8 hero-content" data-aos="fade-up">
+                <div class="col-lg-7 hero-content" data-aos="fade-up">
                     <h1 class="hero-title animate__animated animate__fadeInUp">
                         บริษัท เชียงใหม่โฟรเซ่นฟูดส์ จำกัด (มหาชน)
                     </h1>
                     
-                    
-                    
-                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-                        ท่านสามารถดูประกาศรับสมัครพนักงานและข่าวสารของแผนก HR ผ่านเว็บไซต์นี้ได้เลย
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-check-circle text-gradient-blue me-2"></i>
+                        เปิดรับสมัครงานหลากหลายตำแหน่ง พร้อมสวัสดิการดีๆ รอคุณอยู่
                     </p>
                     
-                    <a href="#jobs" class="glass-btn" data-aos="fade-up" data-aos-delay="300">
-                        <i class="fas fa-briefcase me-2"></i>ดูตำแหน่งงานทั้งหมด
-                    </a>
+                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="150">
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number" id="hero-daily-count">0</div>
+                            <div class="hero-stat-label">ตำแหน่งรายวัน</div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number" id="hero-monthly-count">0</div>
+                            <div class="hero-stat-label">ตำแหน่งรายเดือน</div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number" id="hero-disabled-count">0</div>
+                            <div class="hero-stat-label">ตำแหน่งคนพิการ</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5" data-aos="fade-up" data-aos-delay="200">
+                        <a href="#jobs" class="glass-btn">
+                            <i class="fas fa-briefcase me-2"></i>ดูตำแหน่งงานทั้งหมด
+                        </a>
+                        <a href="#contact" class="glass-btn glass-btn-outline ms-3">
+                            <i class="fas fa-phone-alt me-2"></i>ติดต่อเรา
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="col-lg-4 d-none d-lg-block" data-aos="fade-left" data-aos-delay="400">
+                <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left" data-aos-delay="300">
                     <div class="glass-card p-4 text-center">
                         <img src="https://themewagon.github.io/jobest/v1.0.0/assets/img/illustrations/jobs.png" alt="Job Illustration" class="img-fluid">
                     </div>
@@ -827,8 +997,8 @@
         <div class="container">
             <div class="row text-center mb-5" data-aos="fade-up">
                 <div class="col-12">
-                    <h2 class="display-5 fw-bold text-white">ตำแหน่งงานที่เปิดรับสมัคร</h2>
-                    <p class="text-white-50">ทั้งหมด <span id="total-jobs" class="fw-bold text-white">0</span> ตำแหน่ง</p>
+                    <h2 class="section-title">ตำแหน่งงานที่เปิดรับสมัคร</h2>
+                    <p class="section-subtitle">เลือกตำแหน่งที่ใช่ สำหรับคุณโดยเฉพาะ</p>
                 </div>
             </div>
             
@@ -845,7 +1015,7 @@
                             <span id="daily-positions">0 ตำแหน่ง</span> • <span id="daily-positions-count">0 อัตรา</span>
                         </div>
                         <div class="mt-3">
-                            <span class="job-badge">คลิกเพื่อดู</span>
+                            <span class="job-badge">คลิกเพื่อดูรายละเอียด</span>
                         </div>
                     </div>
                 </div>
@@ -862,7 +1032,7 @@
                             <span id="monthly-positions">0 ตำแหน่ง</span> • <span id="monthly-positions-count">0 อัตรา</span>
                         </div>
                         <div class="mt-3">
-                            <span class="job-badge">คลิกเพื่อดู</span>
+                            <span class="job-badge">คลิกเพื่อดูรายละเอียด</span>
                         </div>
                     </div>
                 </div>
@@ -879,7 +1049,7 @@
                             <span id="disabled-positions">0 ตำแหน่ง</span> • <span id="disabled-positions-count">0 อัตรา</span>
                         </div>
                         <div class="mt-3">
-                            <span class="job-badge">คลิกเพื่อดู</span>
+                            <span class="job-badge">คลิกเพื่อดูรายละเอียด</span>
                         </div>
                     </div>
                 </div>
@@ -887,9 +1057,9 @@
             
             <div class="row mt-5">
                 <div class="col-12">
-                    <div class="glass-alert text-center">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        **ทุกตำแหน่ง ต้องมีสุขภาพแข็งแรง ไม่มีโรคประจำตัว และสายตาไม่บอดสี**
+                    <div class="glass-alert text-center" data-aos="fade-up">
+                        <i class="fas fa-exclamation-triangle me-2" style="color: #fee140;"></i>
+                        <strong>ทุกตำแหน่ง</strong> ต้องมีสุขภาพแข็งแรง ไม่มีโรคประจำตัว และสายตาไม่บอดสี
                     </div>
                 </div>
             </div>
@@ -902,7 +1072,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="glass-card p-4" data-aos="fade-up">
-                        <h4 class="text-white text-center mb-4">กรองตำแหน่งงาน</h4>
+                        <h4 class="text-white text-center mb-4">
+                            <i class="fas fa-filter me-2"></i>
+                            กรองตำแหน่งงานตามที่คุณต้องการ
+                        </h4>
                         <div class="d-flex flex-wrap justify-content-center">
                             <button class="filter-btn active" data-filter="all">ทั้งหมด</button>
                             <button class="filter-btn" data-filter="daily">พนักงานรายวัน</button>
@@ -933,7 +1106,10 @@
                 <div class="glass-card p-5">
                     <i class="fas fa-search fa-4x text-white-50 mb-3"></i>
                     <h4 class="text-white">ไม่มีตำแหน่งงานว่างในขณะนี้</h4>
-                    <p class="text-white-50">กรุณาติดตามข่าวสารในครั้งต่อไป หรือติดต่อแผนก HR</p>
+                    <p class="text-white-50">กรุณาติดตามข่าวสารในครั้งต่อไป หรือติดต่อแผนก HR โดยตรง</p>
+                    <a href="#contact" class="glass-btn mt-3">
+                        <i class="fas fa-phone-alt me-2"></i>ติดต่อแผนก HR
+                    </a>
                 </div>
             </div>
         </div>
@@ -944,7 +1120,8 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 text-center" data-aos="fade-up">
-                    <h2 class="display-6 fw-bold text-white">เอกสารประกอบการสมัครงานและสวัสดิการ</h2>
+                    <h2 class="section-title">เอกสารและสวัสดิการ</h2>
+                    <p class="section-subtitle">เตรียมตัวให้พร้อมก่อนสมัครงาน</p>
                 </div>
             </div>
             
@@ -956,21 +1133,23 @@
                             <i class="fas fa-file-alt"></i>
                         </div>
                         <h4 class="text-white fw-bold mb-4">เอกสารประกอบการสมัครงาน</h4>
-                        <ul class="requirement-list list-unstyled">
+                        <ul class="requirement-list">
                             <li><i class="fas fa-check-circle"></i> สำเนาทะเบียนบ้าน 2 ฉบับ</li>
                             <li><i class="fas fa-check-circle"></i> สำเนาบัตรประจำตัวประชาชน 2 ฉบับ</li>
                             <li><i class="fas fa-check-circle"></i> ใบรับรองแพทย์</li>
                             <li><i class="fas fa-check-circle"></i> รูปถ่าย 1 ใบ</li>
                             <li><i class="fas fa-check-circle"></i> สำเนาทะเบียนสมรส/ทะเบียนหย่า</li>
-                            <li><i class="fas fa-check-circle"></i> สำเนาเปลี่ยนชื่อ-นามสกุล/เปลี่ยนคำนำหน้านาม</li>
+                            <li><i class="fas fa-check-circle"></i> สำเนาเปลี่ยนชื่อ-นามสกุล</li>
                         </ul>
                         
                         <div class="glass-alert">
-                            <strong>หมายเหตุ:</strong> กรณีสมัครตำแหน่งพนักงานรายเดือน สามารถส่งเอกสารเป็นไฟล์ PDF มาทาง email: aporn@cmfrozen.com
+                            <i class="fas fa-envelope me-2"></i>
+                            <strong>สำหรับตำแหน่งรายเดือน:</strong> สามารถส่งเอกสารเป็นไฟล์ PDF มาที่ <strong>aporn@cmfrozen.com</strong>
                         </div>
                         
                         <div class="glass-alert mt-3">
-                            <strong>ตำแหน่งเจ้าหน้าที่ส่งเสริม</strong> ต้องมีใบอนุญาตขับขี่และรถจักรยานยนต์เป็นของตนเอง
+                            <i class="fas fa-motorcycle me-2"></i>
+                            <strong>ตำแหน่งเจ้าหน้าที่ส่งเสริม:</strong> ต้องมีใบอนุญาตขับขี่และรถจักรยานยนต์เป็นของตนเอง
                         </div>
                     </div>
                 </div>
@@ -981,10 +1160,10 @@
                         <div class="requirement-icon">
                             <i class="fas fa-gift"></i>
                         </div>
-                        <h4 class="text-white fw-bold mb-4">สวัสดิการ</h4>
+                        <h4 class="text-white fw-bold mb-4">สวัสดิการที่คุณจะได้รับ</h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <ul class="requirement-list list-unstyled">
+                                <ul class="requirement-list">
                                     <li><i class="fas fa-check-circle"></i> ข้าวฟรี</li>
                                     <li><i class="fas fa-check-circle"></i> ชุดยูนิฟอร์ม</li>
                                     <li><i class="fas fa-check-circle"></i> ประกันสังคม</li>
@@ -992,16 +1171,17 @@
                                 </ul>
                             </div>
                             <div class="col-md-6">
-                                <ul class="requirement-list list-unstyled">
+                                <ul class="requirement-list">
                                     <li><i class="fas fa-check-circle"></i> ประกันชีวิตกลุ่ม</li>
                                     <li><i class="fas fa-check-circle"></i> ค่าโอที, ค่ากะดึก</li>
                                     <li><i class="fas fa-check-circle"></i> กองทุนสำรองเลี้ยงชีพ</li>
-                                    <li><i class="fas fa-check-circle"></i> และอื่นๆ</li>
+                                    <li><i class="fas fa-check-circle"></i> และอื่นๆ อีกมากมาย</li>
                                 </ul>
                             </div>
                         </div>
                         
                         <div class="glass-alert mt-3">
+                            <i class="fas fa-info-circle me-2"></i>
                             <strong>เงื่อนไขเป็นไปตามประกาศที่บริษัทกำหนด</strong>
                         </div>
                     </div>
@@ -1010,28 +1190,45 @@
         </div>
     </section>
 
-    <!-- Footer/Contact Section -->
+    <!-- Contact Section -->
     <footer id="contact" class="footer">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <img src="https://img2.pic.in.th/pic/__3_-removebg-preview4509f075d941dc45.png" alt="HR Logo" style="height: 60px;" class="mb-4">
-                    <p class="text-white-50">บริษัท เชียงใหม่โฟรเซ่นฟูดส์ จำกัด(มหาชน)<br>เว็บไซต์ประชาสัมพันธ์ข่าวสารและตำแหน่งงานของแผนก HR</p>
+                    <img src="https://img2.pic.in.th/pic/__3_-removebg-preview4509f075d941dc45.png" alt="HR Logo" class="footer-logo">
+                    <p class="text-white-50 mb-4">
+                        บริษัท เชียงใหม่โฟรเซ่นฟูดส์ จำกัด (มหาชน)<br>
+                        เว็บไซต์ประชาสัมพันธ์ข่าวสารและตำแหน่งงานของแผนก HR
+                    </p>
                     
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-line"></i></a>
                     </div>
                 </div>
                 
                 <div class="col-lg-4">
                     <h5 class="footer-title">ติดต่อสอบถามเพิ่มเติม</h5>
                     <div class="footer-contact">
-                        <p><i class="fas fa-map-marker-alt"></i> 299 หมู่ 14 ต.แม่แฝกใหม่ อ.สันทราย จ.เชียงใหม่ 50290</p>
-                        <p><i class="fas fa-phone"></i> 053-848088 ถึง 92 แผนกสรรหาและฝึกอบรม</p>
-                        <p><i class="fas fa-envelope"></i> aporn@cmfrozen.com</p>
+                        <p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            299 หมู่ 14 ต.แม่แฝกใหม่ อ.สันทราย จ.เชียงใหม่ 50290
+                        </p>
+                        <p>
+                            <i class="fas fa-phone"></i>
+                            053-848088 ถึง 92 แผนกสรรหาและฝึกอบรม
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope"></i>
+                            aporn@cmfrozen.com
+                        </p>
+                        <p>
+                            <i class="fas fa-clock"></i>
+                            จันทร์ - ศุกร์ 08.30 - 17.30 น.
+                        </p>
                     </div>
                 </div>
                 
@@ -1049,7 +1246,10 @@
             </div>
             
             <div class="footer-bottom text-center mt-5 pt-4">
-                <p class="text-white-50 mb-2">&copy; 2025 เรียบเรียงโดย นาย ภาคภูมิ เรือนมูล HrSupport ที่ปรึกษา อ.ธีรพงศ์ พรหมวังค์ ไอทีcm1ร่วมกับไอทีcm2</p>
+                <p class="text-white-50 mb-2">
+                    &copy; 2025 เรียบเรียงโดย นาย ภาคภูมิ เรือนมูล HrSupport 
+                    ที่ปรึกษา อ.ธีรพงศ์ พรหมวังค์ ไอทีcm1 ร่วมกับ ไอทีcm2
+                </p>
                 <div id="visitor-count" class="text-white-50">
                     <i class="fas fa-eye me-1"></i> กำลังโหลดจำนวนผู้เยี่ยมชม...
                 </div>
@@ -1065,12 +1265,17 @@
     <!-- Cookie Consent -->
     <div class="cookie-consent" id="cookieConsent">
         <div class="d-flex justify-content-between align-items-start mb-3">
-            <h6 class="text-white fw-bold mb-0">เว็บไซต์นี้ใช้คุกกี้</h6>
+            <h6 class="text-white fw-bold mb-0">
+                <i class="fas fa-cookie-bite me-2"></i>
+                เว็บไซต์นี้ใช้คุกกี้
+            </h6>
             <button type="button" class="btn-close btn-close-white" id="closeCookieConsent"></button>
         </div>
-        <p class="text-white-50 mb-3">เราใช้คุกกี้เพื่อเพิ่มประสิทธิภาพ และประสบการณ์ที่ดีในการใช้งานเว็บไซต์</p>
-        <div class="d-flex justify-content-between">
-            <button class="filter-btn" id="cookieSettingsBtn">การตั้งค่า</button>
+        <p class="text-white-50 mb-3">
+            เราใช้คุกกี้เพื่อเพิ่มประสิทธิภาพ และประสบการณ์ที่ดีในการใช้งานเว็บไซต์
+        </p>
+        <div class="d-flex justify-content-end gap-2">
+            <button class="filter-btn" id="cookieSettingsBtn">ตั้งค่า</button>
             <button class="filter-btn active" id="acceptAllCookies">ยอมรับทั้งหมด</button>
         </div>
     </div>
@@ -1087,7 +1292,8 @@
         AOS.init({
             duration: 800,
             once: true,
-            offset: 100
+            offset: 100,
+            easing: 'ease-in-out'
         });
 
         // Scroll to Top
@@ -1119,7 +1325,7 @@
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.15)';
+                navbar.style.background = 'rgba(0, 91, 234, 0.2)';
                 navbar.style.backdropFilter = 'blur(12px)';
             } else {
                 navbar.style.background = 'rgba(255, 255, 255, 0.1)';
@@ -1178,17 +1384,22 @@
                 col.setAttribute('data-aos', 'fade-up');
                 col.setAttribute('data-aos-delay', (index % 2) * 100);
                 
-                const typeClass = job.type === 'daily' ? 'daily' : (job.type === 'monthly' ? 'monthly' : 'disabled');
                 const typeText = job.type === 'daily' ? 'รายวัน' : (job.type === 'monthly' ? 'รายเดือน' : 'รายวัน (คนพิการ)');
                 
                 col.innerHTML = `
-                    <div class="job-card ${typeClass}">
+                    <div class="job-card">
                         <div class="job-header">
                             <h3 class="job-title">${job.title}</h3>
-                            <p class="job-department"><i class="fas fa-building me-2"></i>${job.department}</p>
+                            <p class="job-department">
+                                <i class="fas fa-building me-2"></i>${job.department}
+                            </p>
                             <div class="mt-2">
-                                <span class="job-badge">ตำแหน่งที่ ${index + 1}</span>
-                                <span class="job-badge">${typeText}</span>
+                                <span class="job-badge">
+                                    <i class="fas fa-hashtag me-1"></i>ตำแหน่งที่ ${index + 1}
+                                </span>
+                                <span class="job-badge">
+                                    <i class="fas fa-tag me-1"></i>${typeText}
+                                </span>
                             </div>
                         </div>
                         <div class="job-body">
@@ -1219,7 +1430,7 @@
                         </div>
                         <div class="job-footer">
                             <span class="job-status ${job.status === 'urgent' ? 'urgent' : ''}">
-                                ${job.status === 'urgent' ? 'เปิดรับสมัคร ด่วน!!!' : 'เปิดรับสมัคร'}
+                                ${job.status === 'urgent' ? '🔥 เปิดรับสมัคร ด่วน!!!' : '✅ เปิดรับสมัคร'}
                             </span>
                             <small class="text-white-50">
                                 <i class="fas fa-calendar-alt me-1"></i>${job.postedDate}
@@ -1243,6 +1454,7 @@
             const monthlyPositions = monthly.reduce((sum, job) => sum + job.positions, 0);
             const disabledPositions = disabled.reduce((sum, job) => sum + job.positions, 0);
             
+            // Update stat cards
             document.getElementById('daily-count').textContent = daily.length;
             document.getElementById('monthly-count').textContent = monthly.length;
             document.getElementById('disabled-count').textContent = disabled.length;
@@ -1255,7 +1467,10 @@
             document.getElementById('monthly-positions-count').textContent = `${monthlyPositions} อัตรา`;
             document.getElementById('disabled-positions-count').textContent = `${disabledPositions} อัตรา`;
             
-            document.getElementById('total-jobs').textContent = jobs.length;
+            // Update hero stats
+            document.getElementById('hero-daily-count').textContent = daily.length;
+            document.getElementById('hero-monthly-count').textContent = monthly.length;
+            document.getElementById('hero-disabled-count').textContent = disabled.length;
         }
 
         function formatDate(dateString) {
@@ -1272,27 +1487,27 @@
             }
         }
 
-        // สร้างข้อมูลตัวอย่างสำหรับทดสอบ
+        // Create sample data for testing
         function createSampleData() {
             const sampleJobs = [
                 {
                     title: 'พนักงานผลิตทั่วไป',
                     department: 'แผนกผลิต',
                     positions: 5,
-                    age: '20',
+                    age: '20-45',
                     height: '160 ซม. ขึ้นไป',
                     education: 'ม.6 ขึ้นไป',
                     qualifications: 'สุขภาพแข็งแรง สามารถทำงานเป็นกะได้',
-                    description: 'ทำงานในไลน์ผลิตอาหารแช่แข็ง',
+                    description: 'ทำงานในไลน์ผลิตอาหารแช่ frozen',
                     status: 'urgent',
                     postedDate: '15/04/2567',
                     type: 'daily'
                 },
                 {
                     title: 'พนักงานจัดเรียงสินค้า',
-                    department: 'แผนกคลังสินค้า',
+                    department: 'คลังสินค้า',
                     positions: 3,
-                    age: '20',
+                    age: '20-45',
                     height: '160 ซม. ขึ้นไป',
                     education: 'ม.6 ขึ้นไป',
                     qualifications: 'สุขภาพแข็งแรง สามารถยกของได้',
@@ -1303,41 +1518,41 @@
                 },
                 {
                     title: 'เจ้าหน้าที่บัญชี',
-                    department: 'แผนกบัญชี',
-                    positions: 1,
-                    age: '25',
+                    department: 'บัญชี',
+                    positions: 2,
+                    age: '23-40',
                     height: 'ไม่ระบุ',
                     education: 'ปวส. บัญชีขึ้นไป',
                     qualifications: 'มีประสบการณ์ด้านบัญชี 1 ปีขึ้นไป',
-                    description: 'ทำบัญชีทั่วไป จัดทำรายงาน',
-                    status: 'open',
-                    postedDate: '10/04/2567',
-                    type: 'monthly'
-                },
-                {
-                    title: 'เจ้าหน้าที่บุคคล',
-                    department: 'แผนกบุคคล',
-                    positions: 2,
-                    age: '23',
-                    height: 'ไม่ระบุ',
-                    education: 'ปริญญาตรี สาขาที่เกี่ยวข้อง',
-                    qualifications: 'มีมนุษย์สัมพันธ์ดี เรียนรู้เร็ว',
-                    description: 'ดูแลงานด้านบุคคล',
+                    description: 'ทำบัญชีทั่วไป จัดทำรายงานทางการเงิน',
                     status: 'open',
                     postedDate: '12/04/2567',
                     type: 'monthly'
                 },
                 {
+                    title: 'เจ้าหน้าที่บุคคล',
+                    department: 'บุคคล',
+                    positions: 1,
+                    age: '23-40',
+                    height: 'ไม่ระบุ',
+                    education: 'ปริญญาตรี สาขาที่เกี่ยวข้อง',
+                    qualifications: 'มีมนุษย์สัมพันธ์ดี เรียนรู้เร็ว',
+                    description: 'ดูแลงานด้านบุคคล เอกสารต่างๆ',
+                    status: 'open',
+                    postedDate: '13/04/2567',
+                    type: 'monthly'
+                },
+                {
                     title: 'พนักงานผลิต (คนพิการ)',
-                    department: 'แผนกผลิต',
+                    department: 'ผลิต',
                     positions: 2,
-                    age: '20',
+                    age: '20-45',
                     height: 'ไม่ระบุ',
                     education: 'ม.6 ขึ้นไป',
                     qualifications: 'เป็นผู้พิการตามกฎหมาย มีใบรับรอง',
                     description: 'ทำงานตามความเหมาะสมกับสภาพร่างกาย',
                     status: 'open',
-                    postedDate: '13/04/2567',
+                    postedDate: '10/04/2567',
                     type: 'disabled'
                 }
             ];
@@ -1348,7 +1563,7 @@
             displayJobs(allJobs);
             
             document.getElementById('job-loading').style.display = 'none';
-            document.getElementById('visitor-count').innerHTML = '<i class="fas fa-eye me-1"></i> ผู้เยี่ยมชม: 1,234 คน';
+            document.getElementById('visitor-count').innerHTML = '<i class="fas fa-eye me-1"></i> ผู้เยี่ยมชม: 2,547 คน';
         }
 
         // Fetch real data
@@ -1427,9 +1642,10 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'ยอมรับคุกกี้เรียบร้อย',
-                    timer: 1500,
+                    text: 'ขอบคุณที่ไว้วางใจเรา',
+                    timer: 2000,
                     showConfirmButton: false,
-                    background: 'rgba(255,255,255,0.2)',
+                    background: 'rgba(0, 91, 234, 0.2)',
                     backdrop: 'blur(12px)'
                 });
             });
@@ -1441,11 +1657,40 @@
             document.getElementById('cookieSettingsBtn').addEventListener('click', () => {
                 Swal.fire({
                     title: 'การตั้งค่าคุกกี้',
-                    background: 'rgba(255,255,255,0.2)',
+                    html: `
+                        <div class="text-start text-white">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="essentialCookies" checked disabled>
+                                <label class="form-check-label" for="essentialCookies">
+                                    <strong>คุกกี้พื้นฐานที่จำเป็น</strong><br>
+                                    <small class="text-white-50">จำเป็นสำหรับการทำงานของเว็บไซต์</small>
+                                </label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="analyticsCookies" checked>
+                                <label class="form-check-label" for="analyticsCookies">
+                                    <strong>คุกกี้วิเคราะห์</strong><br>
+                                    <small class="text-white-50">ช่วยให้เราปรับปรุงเว็บไซต์</small>
+                                </label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="marketingCookies">
+                                <label class="form-check-label" for="marketingCookies">
+                                    <strong>คุกกี้การตลาด</strong><br>
+                                    <small class="text-white-50">ใช้เพื่อแสดงโฆษณาที่เหมาะสม</small>
+                                </label>
+                            </div>
+                        </div>
+                    `,
+                    background: 'rgba(0, 91, 234, 0.2)',
                     backdrop: 'blur(12px)',
                     showCancelButton: true,
                     confirmButtonText: 'บันทึก',
-                    cancelButtonText: 'ยกเลิก'
+                    cancelButtonText: 'ยกเลิก',
+                    customClass: {
+                        confirmButton: 'glass-btn',
+                        cancelButton: 'glass-btn glass-btn-outline'
+                    }
                 });
             });
         }
@@ -1454,6 +1699,15 @@
         document.addEventListener('DOMContentLoaded', () => {
             fetchJobData();
             setupCookieConsent();
+            
+            // Auto-update visitor count every 30 seconds
+            setInterval(() => {
+                const currentCount = document.getElementById('visitor-count').innerText;
+                if (currentCount.includes(':')) {
+                    const count = parseInt(currentCount.split(':')[1].replace(/[^0-9]/g, '')) || 0;
+                    document.getElementById('visitor-count').innerHTML = `<i class="fas fa-eye me-1"></i> ผู้เยี่ยมชม: ${count + Math.floor(Math.random() * 3)} คน`;
+                }
+            }, 30000);
         });
     </script>
 </body>
